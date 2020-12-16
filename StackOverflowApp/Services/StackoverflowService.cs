@@ -86,6 +86,10 @@ namespace StackOverflowApp.Services
                     var items =  JsonConvert.DeserializeObject<Dictionary<string, object>>(serializedString);
                     var answers = JsonConvert.DeserializeObject<Answer[]>(items["items"].ToString());
 
+                    if (answers.Length == 0)
+                    {
+                        throw new Exception("Owner not found");
+                    }
                     var userId = answers[0].Owner.UserId;
 
                     // Getting user data for answer
@@ -100,7 +104,7 @@ namespace StackOverflowApp.Services
                         var users = itemsOfUser["items"].ToString();
                         var user = JsonConvert.DeserializeObject<OwnerEntity[]>(users);
 
-                        return user[0];
+                        return user.Length > 0 ? user[0] : new OwnerEntity();
                     }
                     else
                     {
