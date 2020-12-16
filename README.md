@@ -1,6 +1,6 @@
 # StackoverflowService
 
-Simple REST API service for querying the best answers and question from out favorite site StackOverflow.
+Simple REST API service for querying the best answers and question from our favorite site StackOverflow.
 
 The service is built with .NET Core 3.1 and C#.
 
